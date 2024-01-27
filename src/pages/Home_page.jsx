@@ -44,7 +44,7 @@ const Home_page = ()=>{
                             {
                                 patients.map((patient, index) =>{
                                     return (
-                                        <Patient key={index} patient={patient}/>
+                                        <Patient key={index} patient={patient} get_patients ={get_patients}/>
                                     )
                                 })
                             }

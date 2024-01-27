@@ -56,7 +56,7 @@ const Create_page = ()=>{
                 </div>
                 <div className="space-y-2">
                     <label>Email</label>
-                    <input type="text" value={email} onChange={(e)=> set_email(e.target.value)} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter ID"/>
+                    <input type="text" value={email} onChange={(e)=> set_email(e.target.value)} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter patient email"/>
                 </div>
                 <div>
                     {!is_loading && (<button className="block w-full mt-6 bg-blue-700 text-white rounded-sm px-4 py-2 font-bold hover:bg-blue-600 hover:cursor-pointer">Add Patient</button>)}   
