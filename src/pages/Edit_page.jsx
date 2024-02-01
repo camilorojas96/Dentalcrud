@@ -38,7 +38,43 @@ const Edit_page = ()=>{
     const update_patient= async(e)=>{
         e.preventDefault()
         set_is_loading(true)
+        const pattern_id = /^(\d{6,10})$/
+        if(!pattern_id.test(patient.id)){
+            set_is_loading(false)
+            toast.error(("Invalid ID"))
+            toast.error(("Id must only contain [6-10] Numbers"))
+            return
+        }
+        const pattern_last_name = /^([A-Z][a-z]{1,})$/
+        if(!pattern_last_name.test(patient.last_name)){
+            set_is_loading(false)
+            toast.error(("Invalid last name"))
+            toast.error(("Only input one last name , starting with Upper case"))
+            return
+        }
+        const pattern_name = /^([A-Z][a-z]{1,})$/
+        if(!pattern_name.test(patient.name)){
+            set_is_loading(false) 
+            toast.error(("Invalid name"))
+            toast.error(("Only input one name , starting with Upper case"))
+            return 
+        }
+        const pattern_phone = /\+\d{12}/
+        if(!pattern_phone.test(patient.phone)){
+            set_is_loading(false)
+            toast.error(("Invalid phone"))
+            toast.error(("'+' + Country code + Phone"))
+            return
+        }
+        const pattern_email = /^[\w.-]{5,30}@[\w.-]{3,5}\.\w{2,5}([.\w]{3,3})?$/
+        if(!pattern_email.test(patient.email)){
+            set_is_loading(false)
+            toast.error(("Invalid email"))
+            toast.error(("Characters not permitted"))
+            return
+        }
         try {
+
             await axios.put(`http://localhost:3000/api/patients/${id}`, patient)
             toast.success("Updated patient")
             navigate('/')
@@ -48,7 +84,7 @@ const Edit_page = ()=>{
             set_is_loading(false)
             toast.error(error.message)
         }
-
+        
     }
 
     useEffect(()=>{
@@ -65,7 +101,7 @@ const Edit_page = ()=>{
                 <form onSubmit={update_patient}>
                 <div className="space-y-2">
                     <label>ID</label>
-                    <input type="number" value={patient.id} onChange={(e)=> set_patient({...patient, id: e.target.value})} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter patient ID"/>
+                    <input type="string" value={patient.id} onChange={(e)=> set_patient({...patient, id: e.target.value})} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter patient ID"/>
                 </div>
                 <div className="space-y-2">
                     <label>Last name</label>
@@ -77,7 +113,7 @@ const Edit_page = ()=>{
                 </div>
                 <div className="space-y-2">
                     <label>Phone</label>
-                    <input type="number" value={patient.phone} onChange={(e)=> set_patient({...patient, phone: e.target.value})} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter patient phone"/>
+                    <input type="string" value={patient.phone} onChange={(e)=> set_patient({...patient, phone: e.target.value})} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter patient phone"/>
                 </div>
                 <div className="space-y-2">
                     <label>Email</label>

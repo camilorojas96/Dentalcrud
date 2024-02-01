@@ -12,15 +12,46 @@ const Create_page = ()=>{
     const[email,set_email] = useState("")
     const[is_loading, set_is_loading] = useState(false)
     const navigate = useNavigate()
+
     
     const add_patient = async(e) =>{
         e.preventDefault()
         if(name === "" || id ==="" || last_name ==="" || phone === "" || email ===""){
             toast.error(("Please fill all the information"))
+            return    
+        }
+        const pattern_id = /^(\d{6,10})$/
+        if(!pattern_id.test(id)){
+            toast.error(("Invalid ID"))
+            toast.error(("Id must only contain [6-10] Numbers"))
+            return
+        }
+        const pattern_last_name = /^([A-Z][a-z]{1,})$/
+        if(!pattern_last_name.test(last_name)){
+            toast.error(("Invalid last name"))
+            toast.error(("Only input one last name , starting with Upper case"))
+            return
+        }
+        const pattern_name = /^([A-Z][a-z]{1,})$/
+        if(!pattern_name.test(name)){
+            toast.error(("Invalid name"))
+            toast.error(("Only input one name , starting with Upper case"))
+            return 
+        }
+        const pattern_phone = /\+\d{12}/
+        if(!pattern_phone.test(phone)){
+            toast.error(("Invalid phone"))
+            toast.error(("'+' + Country code + Phone"))
+            return
+        }
+        const pattern_email = /^[\w.-]{5,30}@[\w.-]{3,5}\.\w{2,5}([.\w]{3,3})?$/
+        if(!pattern_email.test(email)){
+            toast.error(("Invalid email"))
+            toast.error(("Characters not permitted"))
             return
         }
         try {
-            set_is_loading(true)
+            set_is_loading(true)    
             const response = await axios.post("http://localhost:3000/api/patients", {name: name, last_name: last_name, id: id, phone: phone, email: email})
             toast.success(`Saved: ${response.data.last_name} ${response.data.name} successfully`)
             set_is_loading(false)
@@ -40,7 +71,7 @@ const Create_page = ()=>{
             <form onSubmit={add_patient}>
                 <div className="space-y-2">
                     <label>ID</label>
-                    <input type="number" value={id} onChange={(e)=> set_id(e.target.value)}className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter patient ID"/>
+                    <input type="string" value={id} onChange={(e)=> set_id(e.target.value)}className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter patient ID"/>
                 </div>
                 <div className="space-y-2">
                     <label>Last name</label>
@@ -52,7 +83,7 @@ const Create_page = ()=>{
                 </div>
                 <div className="space-y-2">
                     <label>Phone</label>
-                    <input type="number" value={phone} onChange={(e)=> set_phone(e.target.value)} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter patient phone"/>
+                    <input type="string" value={phone} onChange={(e)=> set_phone(e.target.value)} className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400" placeholder="Enter patient phone"/>
                 </div>
                 <div className="space-y-2">
                     <label>Email</label>
