@@ -59,14 +59,14 @@ const Edit_page = ()=>{
             toast.error(("Only input one name , starting with Upper case"))
             return 
         }
-        const pattern_phone = /\+\d{12}/
+        const pattern_phone = /^\+\d{12}$/
         if(!pattern_phone.test(patient.phone)){
             set_is_loading(false)
             toast.error(("Invalid phone"))
             toast.error(("'+' + Country code + Phone"))
             return
         }
-        const pattern_email = /^[\w.-]{5,30}@[\w.-]{3,5}\.\w{2,5}([.\w]{3,3})?$/
+        const pattern_email = /^[\w.-]{5,30}@[\w]{3,5}\.(\w{2,5} | \w{2,5}\.\w{2})$/
         if(!pattern_email.test(patient.email)){
             set_is_loading(false)
             toast.error(("Invalid email"))
