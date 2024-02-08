@@ -4,6 +4,7 @@ import Create_page from "./pages/Create_page"
 import Edit_page from "./pages/Edit_page";
 import { ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import Login_page from "./pages/Log in/Login_page"
 
 
 const App = ()=>{
@@ -11,7 +12,7 @@ const App = ()=>{
     <div>
       <nav className="bg-gray-800">
         <div className="container mx-1 p-2">
-          <Link to="/"><h2 className="text-white text-2xl font-bold">Dental CRUD</h2></Link>
+          <Link to="/"><h2 className="text-white text-2xl font-bold">Heiditas Clinic</h2></Link>
         </div>
       </nav>
       <div className="container mx-auto p-2 h-full">
