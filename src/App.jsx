@@ -16,7 +16,8 @@ const App = ()=>{
       </nav>
       <div className="container mx-auto p-2 h-full">
       <Routes>
-        <Route index element ={<Home_page/>}></Route>
+        <Route index element ={<Login_page/>}></Route>
+        <Route path="/home" element ={<Home_page/>}></Route>
         <Route path="/create" element ={<Create_page/>}></Route>
         <Route path="/edit/:id" element={<Edit_page/>}></Route>
       </Routes>
