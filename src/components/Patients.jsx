@@ -31,7 +31,7 @@ const Patient = ({patient, get_patients}) =>{
     }
 
     return(
-        <div className="bg-slate-300 rounded shadow-lg overflow-hidden">
+        <div className="bg-white rounded shadow-lg overflow-hidden">
             <div className="px-3 pb-3">
                 <h2 className="text font-semibold">ID: {patient.id}</h2>
                 <div className="text-sm">Last name: {patient.last_name}</div>
@@ -40,7 +40,7 @@ const Patient = ({patient, get_patients}) =>{
                 <div className="text-sm">Email: {patient.email}</div>
 
                 <div className="mt-2 flex gap-4">
-                    <Link to={`/edit/${patient._id}`} className="inline-block w-full text-center shadow-md text-sm bg-cyan-700 text-white rounded-sm px-4 py-1 font-bold hover:bg-cyan-400 hover:cursor-pointer">Edit</Link>
+                    <Link to={`/edit/${patient._id}`} className="inline-block w-full text-center shadow-md text-sm bg-blue-600 text-white rounded-sm px-4 py-1 font-bold hover:bg-blue-400 hover:cursor-pointer">Edit</Link>
                     <button onClick={()=>delete_patient(patient._id)} className="inline-block w-full text-center shadow-md text-sm bg-red-700 text-white rounded-sm px-4 py-1 font-bold hover:bg-red-500 hover:cursor-pointer">Delete</button>
                 </div>
             
