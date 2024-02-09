@@ -32,7 +32,7 @@ const Home_page = ()=>{
     return(
         <div>
             <div>
-                <Link to ="/create" className="inline-block mt-4 shadow-md bg-green-700 text-white rounded-sm px-4 py-2 font-bold hover:bg-green-500 hover:cursor-pointer"> Add Patient</Link>
+                <Link to ="/create" className="inline-block mt-4 shadow-md bg-emerald-500 text-white rounded-sm px-4 py-2 font-bold hover:bg-green-500 hover:cursor-pointer"> Add Patient</Link>
             </div>
             <div className=" grid grid.cols-2 lg:grid-cols-4 gap-4 mt-5">
                 {is_loading ?(
