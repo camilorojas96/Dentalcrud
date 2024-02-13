@@ -10,7 +10,7 @@ import Login_page from "./pages/Log in/Login_page"
 const App = ()=>{
   return (
     <div>
-      <nav className="bg-gradient-to-r from-indigo-500 to-emerald-500">
+      <nav className="bg-gradient-to-r from-purple-500">
         <div className="container mx-1 p-2">
           <Link to="/"><h2 className="text-white text-2xl font-bold">Heiditas Clinic</h2></Link>
         </div>
