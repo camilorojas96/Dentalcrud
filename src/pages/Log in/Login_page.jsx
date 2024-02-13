@@ -26,7 +26,7 @@ const Login_page = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/api/login', {
+      const response = await axios.post('http://localhost:3000/api/patients/login', {
         username: inputUsername,
         password: inputPassword,
       });
