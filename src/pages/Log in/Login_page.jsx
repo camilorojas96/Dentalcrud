@@ -1,13 +1,15 @@
-import user_icon from './person.png';
-import password_icon from './password.png';
-import { useState } from 'react';
-import { toast } from 'react-toastify';
-import axios from 'axios';
+import user_icon from './person.png'
+import password_icon from './password.png'
+import { useState, } from 'react'
+import { useNavigate} from "react-router-dom"
+import { toast } from 'react-toastify'
+import axios from 'axios'
+
 
 const Login_page = () => {
   const [inputUsername, setUsername] = useState('')
   const [inputPassword, setPassword] = useState('')
- 
+  const navigate = useNavigate() 
 
   const handleInputChange = (e, type) => {
     const value = e.target.value;
@@ -38,10 +40,10 @@ const Login_page = () => {
 
       if (is_admin) {
         toast.success('Admin login successful')
-        window.location.href = '/home'
+        navigate('/home')
       } else {
         toast.success('Patient login successful')
-        window.location.href = `/home/patient/${_id}`
+        navigate(`/home/patient/${_id}`)
       }
     } else {
       toast.error('Invalid credentials')

@@ -20,7 +20,7 @@ const App = ()=>{
       <Routes>
         <Route index element ={<Login_page/>}></Route>
         <Route path="/home" element ={<Home_page/>}></Route>
-        <Route path="/patient_home" element ={<Home_page_patient/>}></Route>
+        <Route path="/home/patient/:id" element ={<Home_page_patient/>}></Route>
         <Route path="/create" element ={<Create_page/>}></Route>
         <Route path="/edit/:id" element={<Edit_page/>}></Route>
       </Routes>
