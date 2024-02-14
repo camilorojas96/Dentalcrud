@@ -5,8 +5,9 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const Login_page = () => {
-  const [inputUsername, setUsername] = useState('');
-  const [inputPassword, setPassword] = useState('');
+  const [inputUsername, setUsername] = useState('')
+  const [inputPassword, setPassword] = useState('')
+ 
 
   const handleInputChange = (e, type) => {
     const value = e.target.value;
@@ -20,27 +21,36 @@ const Login_page = () => {
   const validateUser = async (e) => {
     e.preventDefault();
 
-    if (inputUsername === '' || inputPassword === '') {
-      toast.error('Please fill all the information');
-      return;
-    }
+  if (inputUsername === '' || inputPassword === '') {
+    toast.error('Please fill all the information');
+    return;
+  }
 
-    try {
-      const response = await axios.post('http://localhost:3000/api/patients/login', {
-        username: inputUsername,
-        password: inputPassword,
-      });
+  try {
+    const response = await axios.post('http://localhost:3000/api/patients/login', {
+      username: inputUsername,
+      password: inputPassword,
+    });
 
-      if (response.data.success) {
-        toast.success('Login successful');
-        window.location.href = '/home';
+    if (response.data.success) {
+      const is_admin = response.data.is_admin
+      const _id = response.data._id
+
+      if (is_admin) {
+        toast.success('Admin login successful')
+        window.location.href = '/home'
       } else {
-        toast.error('Invalid credentials');
+        toast.success('Patient login successful')
+        window.location.href = `/home/patient/${_id}`
       }
-    } catch (error) {
-      toast.error('Error during login. Please try again.');
+    } else {
+      toast.error('Invalid credentials')
     }
-  };
+  } catch (error) {
+    toast.error('Error during login. Please try again.')
+  }
+  
+}
 
   return (
     <div className="container bg-gray-200 p-8 md:p-16 rounded-lg">
