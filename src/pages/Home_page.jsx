@@ -9,7 +9,7 @@ const Home_page = ()=>{
     const [patients, setPatients] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
   
-    const getPatients = async () => {
+    const get_patients = async () => {
       try {
         setIsLoading(true);
         const response = await axios.get("http://127.0.0.1:3000/api/patients");
@@ -21,7 +21,7 @@ const Home_page = ()=>{
     }
   
     useEffect(() => {
-      getPatients();
+      get_patients();
     }, []);
   
     return (
@@ -38,7 +38,7 @@ const Home_page = ()=>{
             <>
               {patients.length > 0 ? (
                 patients.map((patient, index) => (
-                  <Patient key={index} patient={patient} getPatients={getPatients} />
+                  <Patient key={index} patient={patient} get_patients={get_patients} />
                 ))
               ) : (
                 <div>

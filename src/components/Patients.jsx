@@ -4,31 +4,34 @@ import { toast } from "react-toastify"
 import Swal from "sweetalert2"
 /* eslint-disable react/prop-types */
 
+
 const Patient = ({patient, get_patients}) =>{
-
     
-    const delete_patient = async(id) =>{
-        const result = await Swal.fire({
-            title: "Do you really want to delete the patient?",
-            icon: "Warning",
-            showCancelButton: true,
-            confirmButtonColor: "#9400D3",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it"
-        })
+    
 
-        if(result.isConfirmed){
-            try {
-                await axios.delete(`http://localhost:3000/api/patients/${id}`)
-                toast.success("Deleted patient successfully")
-                get_patients()
-                
-            } catch (error) {
-                toast.error(error.message)
-            }
+    const delete_patient = async (id) => {
+        const result = await Swal.fire({
+          title: "Do you really want to delete the patient?",
+          icon: "Warning",
+          showCancelButton: true,
+          confirmButtonColor: "#9400D3",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it"
+        })
+    
+        if (result.isConfirmed) {
+          try {
+            await axios.delete(`http://localhost:3000/api/patients/${id}`)
+            toast.success("Deleted patient successfully")
+            get_patients();
+          } catch (error) {
+            toast.error(error.message)
+          }
 
         }
-    }
+        
+      }
+     
 
     return(
         <div className="bg-white rounded shadow-lg overflow-hidden">
