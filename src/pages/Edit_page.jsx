@@ -77,7 +77,7 @@ const Edit_page = ()=>{
 
             await axios.put(`http://localhost:3000/api/patients/${id}`, patient)
             toast.success("Updated patient")
-            navigate('/')
+            navigate('/home')
 
             
         } catch (error) {

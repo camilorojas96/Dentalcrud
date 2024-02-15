@@ -23,13 +23,13 @@ const Patient = ({patient, get_patients}) =>{
           try {
             await axios.delete(`http://localhost:3000/api/patients/${id}`)
             toast.success("Deleted patient successfully")
-            get_patients();
+            get_patients()
           } catch (error) {
             toast.error(error.message)
           }
 
         }
-        
+
       }
      
 
