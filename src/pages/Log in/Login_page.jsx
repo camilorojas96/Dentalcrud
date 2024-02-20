@@ -39,7 +39,8 @@ const Login_page = () => {
       const is_admin = response.data.is_admin
       const _id = response.data._id
       const token = response.data.token
-      localStorage.setItem('token', token);
+      sessionStorage.setItem('token', token)
+      sessionStorage.setItem('_id', _id)
       
 
       if (is_admin) {

@@ -53,9 +53,14 @@ const Create_page = ()=>{
             return
         }
         try {
-            set_is_loading(true)    
+            set_is_loading(true)
+            const token = sessionStorage.getItem('token')   
             const response = await axios.post("http://localhost:3000/api/patients", 
-            {name: name, last_name: last_name, id: id, phone: phone, email: email, administrator: administrator, password: password})
+        {name: name, last_name: last_name, id: id, phone: phone, email: email, administrator: administrator, password: password}, {
+            headers: {
+                Authorization: `Bearer ${token}`, 
+            },
+        });
             toast.success(`Saved: ${response.data.last_name} ${response.data.name} successfully`)
             set_is_loading(false)
             navigate("/home")

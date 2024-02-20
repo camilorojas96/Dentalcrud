@@ -16,26 +16,33 @@ const Home_page_patient = ()=>{
         email: "",
     })
 
-    const get_patient = async() =>{
+    const get_patient = async () => {
       try {
-        
-        const response = await axios.get(`http://127.0.0.1:3000/api/patients/${id}`);
+        const token = sessionStorage.getItem("token");
+        const response = await axios.get(`http://127.0.0.1:3000/api/patients/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+    
+        if (response.data && response.data._id) {
           set_patient({
-              id: response.data.id,
-              name: response.data.name,
-              last_name: response.data.last_name,
-              phone: response.data.phone,
-              email: response.data.email,
-          })
+            id: response.data.id,
+            name: response.data.name,
+            last_name: response.data.last_name,
+            phone: response.data.phone,
+            email: response.data.email,
+          });
+        } else {      
+          toast.error("Invalid patient data");
+        }
       } catch (error) {
-      
-        toast.error(error.message)
+        toast.error(error.message);
       }
-  }
-
+    };
   useEffect(()=>{
     get_patient()
-  },[id])
+  },[])
 
     return (
 <div className="max-w-lg mx-auto p-7 rounded mt-6 bg-white shadow-md">

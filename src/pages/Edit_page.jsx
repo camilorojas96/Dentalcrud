@@ -20,7 +20,12 @@ const Edit_page = ()=>{
     const get_patient = async() =>{
         set_is_loading(true)
         try {
-            const response =  await axios.get(`http://127.0.0.1:3000/api/patients/${id}`)
+        const token = sessionStorage.getItem('token')
+        const response = await axios.get(`http://127.0.0.1:3000/api/patients/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`, 
+            },
+        });
             set_patient({
                 id: response.data.id,
                 name: response.data.name,
@@ -98,7 +103,7 @@ const Edit_page = ()=>{
 
     useEffect(()=>{
         get_patient()
-    },[])
+    },[id])
 
     return (
     <div className="max-w-lg bg-white shadow-lg mx-auto p-7 rounded mt-6">

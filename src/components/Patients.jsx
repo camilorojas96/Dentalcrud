@@ -10,7 +10,8 @@ const Patient = ({patient, get_patients}) =>{
     
 
     const delete_patient = async (id) => {
-        const result = await Swal.fire({
+          
+          const result = await Swal.fire({
           title: "Do you really want to delete the patient?",
           icon: "Warning",
           showCancelButton: true,
@@ -21,7 +22,12 @@ const Patient = ({patient, get_patients}) =>{
     
         if (result.isConfirmed) {
           try {
-            await axios.delete(`http://localhost:3000/api/patients/${id}`)
+            const token = sessionStorage.getItem('token')
+            await axios.delete(`http://127.0.0.1:3000/api/patients/${id}`, {
+              headers: {
+                  Authorization: `Bearer ${token}`, 
+              },
+          })
             toast.success("Deleted patient successfully")
             get_patients()
           } catch (error) {
