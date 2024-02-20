@@ -26,6 +26,7 @@ const Login_page = () => {
   if (inputUsername === '' || inputPassword === '') {
     toast.error('Please fill all the information');
     return;
+
   }
 
   try {
@@ -37,6 +38,9 @@ const Login_page = () => {
     if (response.data.success) {
       const is_admin = response.data.is_admin
       const _id = response.data._id
+      const token = response.data.token
+      localStorage.setItem('token', token);
+      
 
       if (is_admin) {
         toast.success('Admin login successful')

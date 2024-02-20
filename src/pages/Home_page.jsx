@@ -12,7 +12,12 @@ const Home_page = ()=>{
     const get_patients = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get("http://127.0.0.1:3000/api/patients");
+        const token = localStorage.getItem("token")
+        const response = await axios.get("http://127.0.0.1:3000/api/patients", {
+      headers: {
+        Authorization: `Bearer ${token}`, 
+      },
+    })
         setPatients(response.data);
         setIsLoading(false);
       } catch (error) {

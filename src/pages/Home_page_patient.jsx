@@ -17,9 +17,9 @@ const Home_page_patient = ()=>{
     })
 
     const get_patient = async() =>{
-      
       try {
-          const response =  await axios.get(`http://127.0.0.1:3000/api/patients/${id}`)
+        
+        const response = await axios.get(`http://127.0.0.1:3000/api/patients/${id}`);
           set_patient({
               id: response.data.id,
               name: response.data.name,
@@ -28,14 +28,14 @@ const Home_page_patient = ()=>{
               email: response.data.email,
           })
       } catch (error) {
-          
-          toast.error(error.message)
+      
+        toast.error(error.message)
       }
   }
 
   useEffect(()=>{
     get_patient()
-  },[])
+  },[id])
 
     return (
 <div className="max-w-lg mx-auto p-7 rounded mt-6 bg-white shadow-md">
