@@ -59,6 +59,14 @@ const Login_page = () => {
   
 }
 
+const forgot_password = (e) => {
+  e.preventDefault();
+  console.log('Forgot password clicked');
+  navigate('/forgot_password');
+};
+
+
+
   return (
     <div className="container bg-gray-200 p-8 md:p-16 rounded-lg">
       <div className="header flex flex-col items-center gap-4 mt-8 md:mt-12">
@@ -95,10 +103,11 @@ const Login_page = () => {
         >
           Login
         </button>
-
         <div className="forgot-password text-sm mt-4">
           <span>Forgot password?</span>
-          <span className="text-purple-500 ml-1 cursor-pointer">Click here!</span>
+          <span  
+          onClick={forgot_password}
+          className="text-purple-500 ml-1 cursor-pointer">Click here!</span>
         </div>
       </div>
     </div>

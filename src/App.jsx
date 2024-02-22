@@ -6,7 +6,7 @@ import { ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import Login_page from "./pages/Log in/Login_page"
 import Home_page_patient from "./pages/Home_page_patient";
-import Change_password from "./pages/Change_password";
+import Forgot_password from "./pages/Forgot_password";
 
 
 const App = ()=>{
@@ -21,7 +21,7 @@ const App = ()=>{
       <Routes>
         <Route index element ={<Login_page/>}></Route>
         <Route path="/home" element ={<Home_page/>}></Route>
-        <Route path="/change_password" element ={<Change_password/>}></Route>
+        <Route path="/forgot_password" element ={<Forgot_password/>}></Route>
         <Route path="/home/patient/:id" element ={<Home_page_patient/>}></Route>
         <Route path="/create" element ={<Create_page/>}></Route>
         <Route path="/edit/:id" element={<Edit_page/>}></Route>
