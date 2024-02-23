@@ -160,16 +160,6 @@ const Create_page = ()=>{
                         </label>
                     </div>
                 </div>
-                <div className="space-y-2">
-            <label>Password</label>
-            <input
-              type="text"
-              value={password}
-              readOnly
-              className="w-full block border p-3 text-gray-600 rounded focus:outline-none focus:shadow-outline focus:border-blue-200 placeholder-gray-400"
-              placeholder="Generated patient password"
-            />
-          </div>
                 </div>
                 <div>
                     {!is_loading && (<button className="block w-full mt-6 bg-blue-700 text-white rounded-sm px-4 py-2 font-bold hover:bg-blue-600 hover:cursor-pointer">Add Patient</button>)}   
