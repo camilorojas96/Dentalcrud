@@ -21,7 +21,7 @@ const Edit_page = ()=>{
         set_is_loading(true)
         try {
         const token = sessionStorage.getItem('token')
-        const response = await axios.get(`http://127.0.0.1:3000/api/patients/${id}`, {
+        const response = await axios.get(`http://127.0.0.1:3000/api/patients/edit/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`, 
             },

@@ -39,10 +39,16 @@ const Login_page = () => {
       const is_admin = response.data.is_admin
       const _id = response.data._id
       const token = response.data.token
+      const first_login = response.data.first_login
       sessionStorage.setItem('token', token)
       sessionStorage.setItem('_id', _id)
       
 
+      if (first_login === true) {
+        toast.success('First login successful');
+        navigate(`/change_password/${_id}`);
+        return 
+      }
       if (is_admin) {
         toast.success('Admin login successful')
         navigate('/home')

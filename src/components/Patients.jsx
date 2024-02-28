@@ -23,7 +23,7 @@ const Patient = ({patient, get_patients}) =>{
         if (result.isConfirmed) {
           try {
             const token = sessionStorage.getItem('token')
-            await axios.delete(`http://127.0.0.1:3000/api/patients/${id}`, {
+            await axios.delete(`http://127.0.0.1:3000/api/patients/delete/${id}`, {
               headers: {
                   Authorization: `Bearer ${token}`, 
               },

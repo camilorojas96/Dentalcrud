@@ -11,7 +11,6 @@ const Create_page = ()=>{
     const[phone,set_phone] = useState("")
     const[email,set_email] = useState("")
     const[administrator,set_administrator] = useState(false)
-    const[password,set_password] = useState("")
     const[is_loading, set_is_loading] = useState(false)
     const navigate = useNavigate()
 
@@ -55,8 +54,8 @@ const Create_page = ()=>{
         try {
             set_is_loading(true)
             const token = sessionStorage.getItem('token')   
-            const response = await axios.post("http://localhost:3000/api/patients", 
-        {name: name, last_name: last_name, id: id, phone: phone, email: email, administrator: administrator, password: password}, {
+            const response = await axios.post("http://localhost:3000/api/patients/create", 
+        {name: name, last_name: last_name, id: id, phone: phone, email: email, administrator: administrator}, {
             headers: {
                 Authorization: `Bearer ${token}`, 
             },
@@ -70,50 +69,9 @@ const Create_page = ()=>{
             
         }
 
-        function generate_password(length = 16) {
-            length = Math.max(8, Math.min(16, length))
-          
-            const lowercase = "abcdefghijklmnopqrstuvwxyz";
-            const uppercase = lowercase.toUpperCase()
-            const numbers = "0123456789"
-            const symbols = "!@#$%^&*()_+-="
-          
-            let charset = lowercase + uppercase + numbers + symbols
-          
-            let hasLowercase = false
-            let hasUppercase = false
-            let hasNumber = false
-            let hasSymbol = false
-          
-            let password = ""
-          
-            while (!hasLowercase || !hasUppercase || !hasNumber || !hasSymbol) {
-              const randomIndex = Math.floor(Math.random() * charset.length)
-              const char = charset.charAt(randomIndex)
-          
-              if (lowercase.includes(char)) {
-                hasLowercase = true
-              } else if (uppercase.includes(char)) {
-                hasUppercase = true
-              } else if (numbers.includes(char)) {
-                hasNumber = true
-              } else if (symbols.includes(char)) {
-                hasSymbol = true
-              }
-          
-              password += char
-            }
-          
-            while (password.length < length) {
-              const randomIndex = Math.floor(Math.random() * charset.length)
-              password += charset.charAt(randomIndex)
-            }
-          
-            return password
-          }
+      
                   
-        const generated_password = generate_password()
-        set_password(generated_password)
+     
         }
 
 
