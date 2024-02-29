@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const Forgot_password= () => {
     {
-        const [inputUsername, setUsername] = useState('');
+        const [input_username, setUsername] = useState('');
         const navigate = useNavigate();
       
         const handleInputChange = (e) => {
@@ -14,22 +14,22 @@ const Forgot_password= () => {
           setUsername(value);
         };
       
-        const resetPassword = async (e) => {
+        const reset_password = async (e) => {
           e.preventDefault();
       
-          if (inputUsername === '') {
+          if (input_username === '') {
             toast.error('Please enter your username');
             return;
           }
       
           try {
-            const response = await axios.post('http://localhost:3000/api/patients/reset-password', {
-              username: inputUsername,
+            const response = await axios.post('http://localhost:3000/api/patients/forgot_password', {
+              username: input_username,
             });
       
             if (response.data.success) {
               toast.success('Password reset link sent to your email');
-              navigate('/login');
+              navigate('/');
             } else {
               toast.error('Invalid username');
             }
@@ -51,7 +51,7 @@ const Forgot_password= () => {
                   type="text"
                   placeholder="Username"
                   className="w-full bg-transparent focus:outline-none"
-                  value={inputUsername}
+                  value={input_username}
                   onChange={handleInputChange}
                 />
               </div>
@@ -59,7 +59,7 @@ const Forgot_password= () => {
       
             <div className="submit-container mt-8 md:mt-12 text-center">
               <button
-                onClick={resetPassword}
+                onClick={reset_password}
                 className="submit bg-purple-500 text-white px-10 py-3 rounded-md font-semibold mx-auto"
               >
                 Reset Password
