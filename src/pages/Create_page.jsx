@@ -27,21 +27,13 @@ const Create_page = ()=>{
             toast.error(("Id must only contain [6-10] Numbers"))
             return
         }
-<<<<<<< HEAD
-        const pattern_last_name = /^([A-Z][a-z]{1,50})$/
-=======
         const pattern_last_name = /^([A-Z]{1})([a-z]{1,})$/
->>>>>>> authentification
         if(!pattern_last_name.test(last_name)){
             toast.error(("Invalid last name"))
             toast.error(("Only input one last name , starting with Upper case"))
             return
         }
-<<<<<<< HEAD
-        const pattern_name = /^([A-Z][a-z]{1,50})$/
-=======
         const pattern_name = /^([A-Z]{1})([a-z]{1,})$/
->>>>>>> authentification
         if(!pattern_name.test(name)){
             toast.error(("Invalid name"))
             toast.error(("Only input one name , starting with Upper case"))
@@ -53,11 +45,7 @@ const Create_page = ()=>{
             toast.error(("'+' + Country code + Phone"))
             return
         }
-<<<<<<< HEAD
-        const pattern_email = /^[\w.-]{5,30}@[\w]{3,5}\.(\w{2,5} | \w{2,5}\.\w{2})$/
-=======
         const pattern_email = /^[\w.-]{4,30}@[\w.-]{3,10}\.\w{2,5}([.\w]{3,3})?$/
->>>>>>> authentification
         if(!pattern_email.test(email)){
             toast.error(("Invalid email"))
             toast.error(("Characters not permitted"))

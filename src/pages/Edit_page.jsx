@@ -73,11 +73,7 @@ const Edit_page = ()=>{
             toast.error(("'+' + Country code + Phone"))
             return
         }
-<<<<<<< HEAD
-        const pattern_email = /^[\w.-]{5,30}@[\w]{3,5}\.(\w{2,5} | \w{2,5}\.\w{2})$/
-=======
         const pattern_email = /^[\w.-]{4,30}@[\w.-]{3,10}\.\w{2,5}([.\w]{3,3})?$/
->>>>>>> authentification
         if(!pattern_email.test(patient.email)){
             set_is_loading(false)
             toast.error(("Invalid email"))
